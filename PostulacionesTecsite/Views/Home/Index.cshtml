@@ -1,0 +1,655 @@
+﻿@model Solicitudes
+@using Microsoft.AspNetCore.Identity
+@{
+	Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--FAVICON-->
+    <link rel="shortcut icon" href="" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/b3a8f0ecfc.js" crossorigin="anonymous"></script>
+
+    <!--BOXICONS-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--SWIPER CSS-->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link href="~/css/swiper-bundle.min.css" rel="stylesheet" />
+    <!--CSS-->
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <title>TECSITE ENTERPRISE</title>
+    <link rel="shortcut icon" href="~/img/icons8_home.ico">
+</head>
+<body>
+    <!--HEADER-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <img src="~/img/logo3.png" alt="" class="logo__imagen"><span class="span-1">TEC</span><span class="span-2">SITE</span>
+            </a>
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link">
+                            <i class='bx bx-home-alt-2'></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#popular" class="nav__link">
+                            <i class='bx bx-building-house'></i>
+                            <span>Nosotros</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#value" class="nav__link">
+                            <i class='bx bx-award'></i>
+                            <span>Alcance</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contact" class="nav__link">
+                            <i class='bx bx-phone'></i>
+                            <span>Contáctenos</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!--CAMBIAR DE TEMA-->
+            <i class='bx bx-moon change-theme' id="theme-button"></i>
+
+            @if (User.IsInRole("ADMIN"))
+            {
+                <a asp-action="listarSolicitudes" asp-controller="Home" class="mantenimiento-button"><i class='bx bx-command'></i></a>
+            }
+             
+            @if (User.IsInRole("ADMIN") || User.IsInRole("USUARIO"))
+            {
+                <a asp-action="Salir" asp-controller="Acceso" class="mantenimiento-button">Salir</a>
+            } else {
+                <a asp-action="Login" asp-controller="Acceso" class="button nav__button">Ingresar</a>
+            
+            }
+           
+        </nav>
+    </header>
+
+    <!--MAIN-->
+    <main class="main">
+        <!--HOME-->
+        <section class="home section" id="home">
+            <div class="home__container container grid">
+                <div class="home__data">
+                    <h1 class="home__title">
+                        Postula <br> Con Nosotros <br> y Realizate
+                    </h1>
+                    <p class="home__description">
+                        Somos una empresa de tecnología especializada en el dessarrollo de software personalizado
+                        y brindamos soluciones informáticas innovadoras. <br><br>
+                        Únete a nuestro gran equipo de trabajo y fórmate como un <span class="coder">coder</span> profesional.
+                    </p>
+
+                    <div class="home__value">
+                        <div>
+                            <h1 class="home__value-number">
+                                9Y <span>+</span>
+                            </h1>
+                            <span class="home__value-description">
+                                Mas de nueve <br> años en el <br> mercado.
+                            </span>
+                        </div>
+                        <div>
+                            <h1 class="home__value-number">
+                                1K <span>+</span>
+                            </h1>
+                            <span class="home__value-description">
+                                Mas de <br> 1000 <br>practicantes.
+                            </span>
+                        </div>
+                        <div>
+                            <h1 class="home__value-number">
+                                2K <span>+</span>
+                            </h1>
+                            <span class="home__value-description">
+                                Mas de 2000 <br> Proyectos <br> realizados.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="home__images">
+                    <div class="home__orbe"></div>
+
+                    <div class="home__img">
+                        <img src="~/img/edificio.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--LOGOS-->
+        <section class="logos section">
+            <div class="logos__container container grid">
+                <div class="logos__img">
+                    <img src="~/img/Oracle-logo.png" alt="">
+                </div>
+                <div class="logos__img">
+                    <img src="~/img/Historia-logo-IBM-urban-comunicacion-diseño-grafico.png" alt="">
+                </div>
+                <div class="logos__img">
+                    <img src="~/img/Cisco-Logo.png" alt="">
+                </div>
+                <div class="logos__img">
+                    <img src="~/img/img_ntt_logo_s.png" alt="">
+                </div>
+                <div class="logos__img">
+                    <img src="~/img/vecteezy_microsoft-transparent-logo-png_19017460_613.png" alt="">
+                </div>
+                <div class="logos__img">
+                    <img src="~/img/Google-Logo-PNG-Free-Image.png" alt="">
+                </div>
+                <div class="logos__img">
+                    <img src="~/img/Microsoft_Azure-Logo.wine.png" alt="">
+                </div>
+                <div class="logos__img">
+                    <img src="~/img/image-removebg-preview.png" alt="">
+                </div>
+            </div>
+        </section>
+
+        <!--POPULAR-->
+        <section class="popular section" id="popular">
+            <div class="container">
+                <span class="section__subtitle">Conocenos</span>
+                <h2 class="section__title">
+                    Nosotros <span>:</span>
+                </h2>
+
+                <div class="popular__container swiper">
+                    <div class="swiper-wrapper">
+                        <article class="popular__card swiper-slide">
+                            <img src="~/img/formacion.png" alt="" class="popular__img">
+
+                            <div class="popular__data">
+                                <h2 class="popular__price">
+                                    Formación
+                                </h2>
+                                <h3 class="popular__title">
+                                    Creamos Profesionales
+                                </h3>
+                                <p class="popular__description">
+                                    Nuestra empresa es una institución líder en la formación de profesionales en el campo de la tecnología. Nos dedicamos a brindar programas educativos y capacitación de alta calidad para desarrollar las habilidades y conocimientos necesarios en el ámbito tecnológico.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="popular__card swiper-slide">
+                            <img src="~/img/tipos-de-convenios-colectivos.jpg" alt="" class="popular__img">
+
+                            <div class="popular__data">
+                                <h2 class="popular__price">
+                                    Convenios
+                                </h2>
+                                <h3 class="popular__title">
+                                    Estamos Asociados
+                                </h3>
+                                <p class="popular__description">
+                                    Nuestra empresa es un referente en el campo de la tecnología y se distingue por su amplia red de convenios estratégicos con otras empresas líderes en el sector. Estos convenios nos permiten ofrecer a nuestros clientes y socios una amplia gama de soluciones tecnológicas de vanguardia.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="popular__card swiper-slide">
+                            <img src="~/img/logros.jpg" alt="" class="popular__img">
+
+                            <div class="popular__data">
+                                <h2 class="popular__price">
+                                    Prestigio
+                                </h2>
+                                <h3 class="popular__title">
+                                    Nuestro alcance
+                                </h3>
+                                <p class="popular__description">
+                                    Somos reconocidos como pioneros en el desarrollo de software, liderando la vanguardia tecnológica en la industria. Nos destacamos por nuestra constante búsqueda de innovación y nuestra capacidad para ofrecer soluciones revolucionarias a diversas entidades y empresas.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="popular__card swiper-slide">
+                            <img src="~/img/Comprender-colaboradores-blog-wow.jpg" alt="" class="popular__img">
+
+                            <div class="popular__data">
+                                <h2 class="popular__price">
+                                    Colaboradores
+                                </h2>
+                                <h3 class="popular__title">
+                                    Personal Capacitado
+                                </h3>
+                                <p class="popular__description">
+                                    Nuestro equipo de expertos en desarrollo de software está compuesto por talentosos ingenieros y desarrolladores altamente capacitados, que están a la vanguardia de las últimas tendencias y tecnologías usando nuevas herramientas y marcos de trabajo.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="swiper-button-next">
+                        <i class='bx bx-chevron-right'></i>
+                    </div>
+                    <div class="swiper-button-prev">
+                        <i class='bx bx-chevron-left'></i>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--VALUE-->
+        <section class="value section" id="value">
+            <div class="value__container container grid">
+                <div class="value__images">
+                    <div class="value__orbe"></div>
+
+                    <div class="value__img">
+                        <img src="~/img/area1.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="value__content">
+                    <div class="value__data">
+                        <span class="section__subtittle">Nuestras Bondades</span>
+                        <h2 class="section__title">
+                            Estamos para ti
+                        </h2>
+                        <p class="value__description">
+                            Somos una empresa con la meta formar profesionales altamente competentes y preparados para enfrentar los desafíos del mundo tecnológico actual. Además de la formación, también brindamos orientación profesional y oportunidades de networking para ayudar a nuestros estudiantes a conectarse con el mercado laboral y alcanzar sus metas profesionales.
+                        </p>
+                    </div>
+
+                    <div class="value__accordion">
+                        <div class="value__accordion-item">
+                            <header class="value__accordion-header">
+                                <i class='bx bx-trending-up value__accordion-icon'></i>
+                                <h3 class="value__accordion-title">
+                                    Misión
+                                </h3>
+                                <div class="value__accordion-arrow">
+                                    <i class='bx bxs-down-arrow'></i>
+                                </div>
+                            </header>
+
+                            <div class="value__accordion-content">
+                                <p class="value__accordion-description">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, voluptates commodi. Suscipit quasi sit aliquam deleniti. Modi culpa fugit ducimus quis numquam odio, doloribus maxime, ut quam ipsam ea. Eum.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="value__accordion-item">
+                            <header class="value__accordion-header">
+                                <i class='bx bx-show value__accordion-icon'></i>
+                                <h3 class="value__accordion-title">
+                                    Visión
+                                </h3>
+                                <div class="value__accordion-arrow">
+                                    <i class='bx bxs-down-arrow'></i>
+                                </div>
+                            </header>
+
+                            <div class="value__accordion-content">
+                                <p class="value__accordion-description">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, voluptates commodi. Suscipit quasi sit aliquam deleniti. Modi culpa fugit ducimus quis numquam odio, doloribus maxime, ut quam ipsam ea. Eum.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="value__accordion-item">
+                            <header class="value__accordion-header">
+                                <i class='bx bx-git-merge value__accordion-icon'></i>
+                                <h3 class="value__accordion-title">
+                                    Objetivos
+                                </h3>
+                                <div class="value__accordion-arrow">
+                                    <i class='bx bxs-down-arrow'></i>
+                                </div>
+                            </header>
+
+                            <div class="value__accordion-content">
+                                <p class="value__accordion-description">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, voluptates commodi. Suscipit quasi sit aliquam deleniti. Modi culpa fugit ducimus quis numquam odio, doloribus maxime, ut quam ipsam ea. Eum.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--CONTACTENOS-->
+        <section class="contact section" id="contact">
+            <div class="contact__container container grid">
+                <div class="contact__images">
+                    <div class="contact__orbe"></div>
+
+                    <div class="contact__img">
+                        <img src="~/img/area3.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="contact__content">
+                    <div class="contact__data">
+                        <span class="section__subtitle">Contáctenos</span>
+                        <h2 class="section__title">Facil contacto <span>.</span></h2>
+                        <p class="contact__description">
+                            Puede contactarse con nosotros por diversos medios como...
+                        </p>
+                    </div>
+
+                    <div class="contact__card">
+                        <div class="contact__card-box">
+                            <div class="contact__card-info">
+                                <i class='bx bxs-phone-call'></i>
+
+                                <div>
+                                    <h3 class="contact__card-title">
+                                        Celular
+                                    </h3>
+                                    <p class="contact__card-description">
+                                        928767006
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button class="button contact__card-button">
+                                Llama
+                            </button>
+                        </div>
+
+                        <div class="contact__card-box">
+                            <div class="contact__card-info">
+                                <i class='bx bxs-microphone'></i>
+                                <div>
+                                    <h3 class="contact__card-title">
+                                        Fijo
+                                    </h3>
+                                    <p class="contact__card-description">
+                                        044-414141
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button class="button contact__card-button">
+                                Marca
+                            </button>
+                        </div>
+
+                        <div class="contact__card-box">
+                            <div class="contact__card-info">
+                                <i class='bx bxs-envelope'></i>
+                                <div>
+                                    <h3 class="contact__card-title">
+                                        Correo
+                                    </h3>
+                                    <p class="contact__card-description">
+                                        tecsite.store<br>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button class="button contact__card-button">
+                                Null
+                            </button>
+                        </div>
+
+                        <div class="contact__card-box">
+                            <div class="contact__card-info">
+                                <i class='bx bxs-phone-call'></i>
+                                <div>
+                                    <h3 class="contact__card-title">
+                                        Titulo null
+                                    </h3>
+                                    <p class="contact__card-description">
+                                        928767006
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button class="button contact__card-button">
+                                Null
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--REGISTRAR SOLICITUD-->
+        <section class="subscribe section">
+            <div class="subscribe__container container">
+                <h1 class="subscribe__title">
+                    Postula Aquí
+                </h1>
+                <p class="subscribe__description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis sunt, veniam eos eveniet rem suscipit esse laboriosam distinctio animi corporis, molestiae assumenda corrupti expedita voluptate fuga et. Exercitationem, quod praesentium!
+                </p>
+                @if (User.IsInRole("ADMIN") || User.IsInRole("USUARIO"))
+                {
+                    <input type="button" href="#" class="button subscribe__button" id="abrirModal" value="Empieza"/>
+                } else
+                {
+                    <a asp-action="Login" asp-controller="Acceso" class="button nav__button">Ingresar</a>
+                }
+
+            </div>
+        </section>
+
+        <!-- FORMULARIO DE SOLICITUDES -->
+        <div id="miModal" class="modal">
+            <div class="modal-contenido">
+                <span class="cerrar">&times;</span>
+                <form asp-action="RegistrarSolicitud" method="POST">
+                    <div class="modal-header">
+                        <h1>REGISTRAR SOLICITUD</h1>
+                    </div>
+                    <div class="container-modal">
+                        <div class="input-box-modal">
+                            <span class="details-modal">Código</span>
+                            <input class="input-modal" type="text" placeholder="El código es autogenerado" readonly>
+                        </div>
+                        <div class="input-box-modal">
+                            <span class="details-modal" asp-for="nom_soli" >Nombres</span>
+                            <input class="input-modal" asp-for=nom_soli  type="text" placeholder="Ingrese sus Nombres" required>
+                        </div>
+                        <div class="input-box-modal">
+                            <span class="details-modal">Apellidos</span>
+                            <input class="input-modal" type="text" asp-for=ape_soli placeholder="Ingrese sus Apellidos" required>
+                        </div>
+                        <div class="input-box-modal">
+                            <span class="details-modal">Dni</span>
+                            <input class="input-modal" type="text" asp-for=dni_soli placeholder="Ingrese su N° Dni" required>
+                        </div>
+                        <div class="input-box-modal">
+                            <span class="details-modal">Fecha de Nacimiento</span>
+                            <input class="input-modal" asp-for=fec_nac_soli type="date" required>
+                        </div>
+                        <div class="input-box-modal">
+                            <span class="details-modal">País</span>
+                            <input class="input-modal" type="text" asp-for=pais_soli placeholder="Ingrese su País de Origen" required>
+                        </div>
+                        <div class="input-box-modal">
+                            <span class="details-modal">Ciudad</span>
+                            <input class="input-modal" type="text" asp-for=ciudad_soli placeholder="Ingrese la ciudad donde vive" required>
+                        </div>
+                        <div class="input-box-modal">
+                            <span class="details-modal">Correo</span>
+                            <input class="input-modal" type="email" asp-for=correo_soli placeholder="Ingrese su correo personal" required>
+                        </div>
+                        <div class="input-box-modal">
+                            <span class="details-modal">Celular</span>
+                            <input class="input-modal" type="text" asp-for=cel_soli placeholder="Ingrese su número personal" required>
+                        </div>
+                        <div class="input-box-modal">
+                            <span class="details-modal">Instituto o Universidad</span>
+                            <input class="input-modal" type="text" asp-for=nom_insti placeholder="Ingrese su centro de estudios" required>
+                        </div>
+                        <div class="input-box-modal">
+                            <span class="details-modal">Carrera</span>
+                            <select class="input-modal"  id="" name="cod_carrera" asp-for=cod_carrera>
+                                <option value="1">Computacion e Informática</option>
+                                <option value="2">Seguridad y Redes</option>
+                                <option value="3">Analista de Datos</option>
+                            </select>
+                        </div>
+                        <div class="input-box-modal">
+                            <span class="details-modal">Ciclo</span>
+                            <select class="input-modal" name=cod_ciclo id="" asp-for=cod_ciclo>
+                                <option value="1">IV</option>
+                                <option value="2">V</option>
+                                <option value="3">VI</option>
+                            </select>
+                        </div>
+                        <div class="input-box-modal">
+                            <span class="details-modal">¿A que área postulas?</span>
+                            <select class="input-modal" name="cod_area" id="" asp-for=cod_area>
+                                <option value="1">Desarrollador Front-End</option>
+                                <option value="2">Desarrollador Back-End</option>
+                                <option value="3">Analista</option>
+                            </select>
+                        </div>
+                        <div class="input-box-modal">
+                            <span class="details-modal">Link de tu portafolio</span>
+                            <input class="input-modal" asp-for=cv_link type="text" placeholder="Ingresa tu link" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="boton-modal-enviar" value="Create"><i class='bx bx-send'></i> ENVIAR</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!--FOOTER-->
+    <footer class="footer section">
+        <div class="footer__container container grid">
+            <div>
+                <a href="#" class="footer__logo">
+                    TECSITE <i class='bx bxs-home-alt-2'></i>
+                </a>
+                <p class="footer__description">
+                    texto texto texto texto <br>
+                    texto texto texto texto
+                </p>
+            </div>
+
+            <div class="footer__content">
+                <div>
+                    <h3 class="footer__title">
+                        Titulo
+                    </h3>
+
+                    <ul class="footer__links">
+                        <li>
+                            <a href="#" class="footer__link">Subtitulo</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Subtitulo</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Subtitulo</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer__title">
+                        Titulo
+                    </h3>
+
+                    <ul class="footer__links">
+                        <li>
+                            <a href="#" class="footer__link">Subtitulo</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Subtitulo</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Subtitulo</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer__title">
+                        Titulo
+                    </h3>
+
+                    <ul class="footer__links">
+                        <li>
+                            <a href="#" class="footer__link">Subtitulo</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Subtitulo</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Subtitulo</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer__title">
+                        Siguenos
+                    </h3>
+
+                    <ul class="footer__social">
+                        <a href="#" class="footer__social-link" target="_blank">
+                            <i class='bx bxl-facebook-circle'></i>
+                        </a>
+                        <a href="#" class="footer__social-link" target="_blank">
+                            <i class='bx bxl-instagram-alt'></i>
+                        </a>
+                        <a href="#" class="footer__social-link" target="_blank">
+                            <i class='bx bxl-pinterest'></i>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer__info container">
+            <span class="footer__copy">
+                &#169; TECSITE. Todos los derechos reservados
+            </span>
+
+            <div class="footer__privacy">
+                <a href="#">Terminos y Condiciones</a>
+                <a href="#">Políticas de Privacidad</a>
+            </div>
+        </div>
+    </footer>
+
+    <!--SCROLL UP-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="bx bx-chevrons-up"></i>
+    </a>
+
+    <!--SCROLL REVEAL-->
+    <script src="js/scrollreveal.min.js"></script>
+    <script src="~/js/scrollreveal.min.js"></script>
+    <!--SWIPER JS-->
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="~/js/swiper-bundle.min.js"></script>
+    <!--MAIN JS-->
+    <script src="js/js.js"></script>
+    <script src="~/js/js.js"></script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+﻿@model IEnumerable<ListarSolicitudes>
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--FAVICON-->
+    <link rel="shortcut icon" href="" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/b3a8f0ecfc.js" crossorigin="anonymous"></script>
+
+    <!--BOXICONS-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--SWIPER CSS-->
+    <link rel="stylesheet" href="~/css/swiper-bundle.min.css">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="~/css/styles.css">
+
+    <title>TECSITE ENTERPRISE</title>
+    <link rel="shortcut icon" href="img/icons8_home.ico">
+</head>
+<body>
+    <!--HEADER-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <img src="~/img/logo3.png" alt="" class="logo__imagen"><span class="span-1">TEC</span><span class="span-2">SITE</span>
+            </a>
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link">
+                            <i class='bx bx-home-alt-2'></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#popular" class="nav__link">
+                            <i class='bx bx-building-house'></i>
+                            <span>Nosotros</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#value" class="nav__link">
+                            <i class='bx bx-award'></i>
+                            <span>Convenios</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contact" class="nav__link">
+                            <i class='bx bx-phone'></i>
+                            <span>Contactenos</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!--CAMBIAR DE TEMA-->
+            <i class='bx bx-moon change-theme' id="theme-button"></i>
+
+
+            <a asp-action="Salir" asp-controller="Acceso" class="mantenimiento-button">Salir</a>
+        </nav>
+    </header>
+
+    <!--MAIN-->
+    <main class="main">
+        <!--MANTENIMIENTOS-->
+        <section class="mantenimientos-section section">
+            <div class="title-mantenimientos">
+                <h1>Panel de Administración</h1>
+            </div>
+            <div class="description-mantenimientos">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In officia laboriosam natus possimus reiciendis optio reprehenderit, magni debitis illum temporibus incidunt mollitia? Illum commodi necessitatibus tempora vitae ducimus, beatae ipsum.</p>
+            </div>
+            <div class="card">
+                <!--CONTENIDO INICIO-->
+                <div class="head-title">
+                    <div class="left">
+                        <h1>Solicitudes</h1>
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#">Lista</a>
+                            </li>
+                            <li><i class="fa-solid fa-chevron-right"></i></li>
+                            <li>
+                                <a href="#" class="active"></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="inputFunction">
+                        <a href="#" class="btn-add">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Aprobadas</span>
+                        </a>
+                        <a href="#" class="btn-add">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Rechazadas</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="table-data">
+                    <div class="order">
+                        <div class="head">
+                            <h3>Los Solicitantes</h3>
+                            <input type="search" class="inputSearch">
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Nombres</th>
+                                    <th>Dni</th>
+                                    <th>Pais</th>
+                                    <th>Correo</th>
+                                    <th>Perfil Institucional</th>
+                                    <th>Area a Postular</th>
+                                    <th>Portafolio</th>
+                                    <th>Fecha de Registro</th>
+                                    <th>Estado</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(var item in Model){
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.cod_solicitud)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.nom_soli)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.dni_soli)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.pais_soli)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.correo_soli)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.perfil)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.area)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.link)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.fecha_registrada)
+                                        </td>
+                                        <td><span class="status pending">Pendientes</span></td>
+                                        <td class="td">
+                                            <a asp-action="aceptarSolis" asp-route-codSoli="@item.cod_solicitud" class="a"><i class='bx bx-check'></i></a>
+                                            <a asp-action="rechazarSolis" asp-route-codSoli="@item.cod_solicitud" class="a"><i class='bx bx-trash'></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--CONTENIDO FIN-->
+            </div>
+        </section>
+    </main>
+
+    <!--FOOTER-->
+    <footer class="footer section">
+        <div class="footer__container container grid">
+            <div>
+                <a href="#" class="footer__logo">
+                    TECSITE <i class='bx bxs-home-alt-2'></i>
+                </a>
+                <p class="footer__description">
+                    texto texto texto texto <br>
+                    texto texto texto texto
+                </p>
+            </div>
+
+            <div class="footer__content">
+                <div>
+                    <h3 class="footer__title">
+                        Titulo
+                    </h3>
+
+                    <ul class="footer__links">
+                        <li>
+                            <a href="#" class="footer__link">Subtitulo</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Subtitulo</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Subtitulo</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer__title">
+                        Titulo
+                    </h3>
+
+                    <ul class="footer__links">
+                        <li>
+                            <a href="#" class="footer__link">Subtitulo</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Subtitulo</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Subtitulo</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer__title">
+                        Titulo
+                    </h3>
+
+                    <ul class="footer__links">
+                        <li>
+                            <a href="#" class="footer__link">Subtitulo</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Subtitulo</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Subtitulo</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer__title">
+                        Siguenos
+                    </h3>
+
+                    <ul class="footer__social">
+                        <a href="#" class="footer__social-link" target="_blank">
+                            <i class='bx bxl-facebook-circle'></i>
+                        </a>
+                        <a href="#" class="footer__social-link" target="_blank">
+                            <i class='bx bxl-instagram-alt'></i>
+                        </a>
+                        <a href="#" class="footer__social-link" target="_blank">
+                            <i class='bx bxl-pinterest'></i>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer__info container">
+            <span class="footer__copy">
+                &#169; TECSITE. Todos los derechos reservados
+            </span>
+
+            <div class="footer__privacy">
+                <a href="#">Terminos y Condiciones</a>
+                <a href="#">Políticas de Privacidad</a>
+            </div>
+        </div>
+    </footer>
+
+    <!--SCROLL UP-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="bx bx-chevrons-up"></i>
+    </a>
+
+    <!--SCROLL REVEAL-->
+    <script src="~/js/scrollreveal.min.js"></script>
+    <!--SWIPER JS-->
+    <script src="~/js/swiper-bundle.min.js"></script>
+    <!--MAIN JS-->
+    <script src="~/js/js.js"></script>
+</body>
+</html>
