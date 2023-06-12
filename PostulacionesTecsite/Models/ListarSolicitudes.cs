@@ -1,4 +1,6 @@
-﻿namespace PostulacionesTecsite.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PostulacionesTecsite.Models
 {
     public class ListarSolicitudes
     {
@@ -14,7 +16,9 @@
 
         public string link { get; set; }
 
-        public DateTime fecha_registrada { get; set; }
+		[DataType(DataType.Date)]
+		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
+		public DateTime fecha_registrada { get; set; }
 
     }
 }

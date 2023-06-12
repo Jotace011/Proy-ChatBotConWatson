@@ -652,5 +652,20 @@
     <!--MAIN JS-->
     <script src="js/js.js"></script>
     <script src="~/js/js.js"></script>
+
+ @*    ESTE ES EL SCRIPT DEL BOT*@
+    <script>
+        window.watsonAssistantChatOptions = {
+            integrationID: "bc54d7cd-e2bf-4608-b65f-b88634d22c47", // The ID of this integration.
+            region: "au-syd", // The region your integration is hosted in.
+            serviceInstanceID: "44daf3ee-eaea-4592-b993-3d098569b1d7", // The ID of your service instance.
+            onLoad: function (instance) { instance.render(); }
+        };
+        setTimeout(function () {
+            const t = document.createElement('script');
+            t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+            document.head.appendChild(t);
+        });
+    </script>
 </body>
 </html>
