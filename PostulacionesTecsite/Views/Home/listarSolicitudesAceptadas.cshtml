@@ -92,15 +92,11 @@
                             </li>
                             <li><i class="fa-solid fa-chevron-right"></i></li>
                             <li>
-                                <a href="#" class="active"></a>
+                                <a href="#" class="active">Aprobadas</a>
                             </li>
                         </ul>
                     </div>
                     <div class="inputFunction">
-                        <a asp-action="listarSolicitudesAceptadas" asp-controller="Home" class="btn-add">
-                            <i class="fa-solid fa-plus"></i>
-                            <span>Aprobadas</span>
-                        </a>
                         <a asp-action="listarSolicitudesRechazadas" asp-controller="Home" class="btn-add">
                             <i class="fa-solid fa-plus"></i>
                             <span>Rechazadas</span>
@@ -130,7 +126,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach(var item in Model){
+                                @foreach (var item in Model)
+                                {
                                     <tr>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.cod_solicitud)
@@ -159,7 +156,7 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.fecha_registrada)
                                         </td>
-                                        <td><span class="status pending">Pendiente</span></td>
+                                        <td><span class="status aceptadas">Aceptadas</span></td>
                                         <td class="td">
                                             <a asp-action="aceptarSolis" asp-route-codSoli="@item.cod_solicitud" class="a"><i class='bx bx-check'></i></a>
                                             <a asp-action="rechazarSolis" asp-route-codSoli="@item.cod_solicitud" class="a"><i class='bx bx-trash'></i></a>

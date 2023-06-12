@@ -59,6 +59,20 @@ namespace PostulacionesTecsite.Controllers
             return View(lista);
         }
 
+        [Authorize(Roles = "ADMIN")]
+        public async Task<IActionResult> listarSolicitudesAceptadas()
+        {
+            List<ListarSolicitudes> lista = await _servicioAPI.listarSolicitudesAceptadas();
+            return View(lista);
+        }
+
+        [Authorize(Roles = "ADMIN")]
+        public async Task<IActionResult> listarSolicitudesRechazadas()
+        {
+            List<ListarSolicitudes> lista = await _servicioAPI.listarSolicitudesRechazadas();
+            return View(lista);
+        }
+
         public async Task<IActionResult> aceptarSolis(int codSoli)
         {
             await _servicioAPI.aceptarSoli(codSoli);
@@ -67,7 +81,7 @@ namespace PostulacionesTecsite.Controllers
 
         public async Task<IActionResult> rechazarSolis(int codSoli)
         {
-            await _servicioAPI.aceptarSoli(codSoli);
+            await _servicioAPI.rechazarSoli(codSoli);
             return RedirectToAction("listarSolicitudes", "Home");
         }
 

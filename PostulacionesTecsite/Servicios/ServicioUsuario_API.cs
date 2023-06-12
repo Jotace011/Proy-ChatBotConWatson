@@ -110,6 +110,46 @@ namespace PostulacionesTecsite.Servicios
             return lista;
         }
 
+        public async Task<List<ListarSolicitudes>> listarSolicitudesAceptadas()
+        {
+            var lista = new List<ListarSolicitudes>();
+
+            var cliente = new HttpClient();
+            cliente.BaseAddress = new Uri(_baseurl);
+
+            var request = await cliente.GetAsync("api/solicitudes/aceptadas");
+
+            if (request.IsSuccessStatusCode)
+            {
+                var res = request.Content.ReadAsStringAsync().Result;
+                lista = JsonConvert.DeserializeObject<List<ListarSolicitudes>>(res);
+                return lista.ToList();
+
+            }
+
+            return lista;
+        }
+
+        public async Task<List<ListarSolicitudes>> listarSolicitudesRechazadas()
+        {
+            var lista = new List<ListarSolicitudes>();
+
+            var cliente = new HttpClient();
+            cliente.BaseAddress = new Uri(_baseurl);
+
+            var request = await cliente.GetAsync("api/solicitudes/rechazadas");
+
+            if (request.IsSuccessStatusCode)
+            {
+                var res = request.Content.ReadAsStringAsync().Result;
+                lista = JsonConvert.DeserializeObject<List<ListarSolicitudes>>(res);
+                return lista.ToList();
+
+            }
+
+            return lista;
+        }
+
         public async Task<bool> guardarSolicitud(Solicitudes solicitudes)
         {
             bool respuesta = false;

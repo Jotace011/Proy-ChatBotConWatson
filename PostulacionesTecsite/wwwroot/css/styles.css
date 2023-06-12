@@ -717,10 +717,10 @@ body.dark-theme{
   border-radius: 20px;
   font-weight: 700;
 }
-.table-data .order table tr td .status.completed{
+.table-data .order table tr td .status.aceptadas{
   background: #24a049;
 }
-.table-data .order table tr td .status.process{
+.table-data .order table tr td .status.rechazadas{
   background: #6e230d;
 }
 .table-data .order table tr td .status.pending{

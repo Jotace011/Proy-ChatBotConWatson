@@ -16,6 +16,10 @@ namespace PostulacionesTecsite.Servicios
 
         Task<List<ListarSolicitudes>> listarSolicitudes();
 
+        Task<List<ListarSolicitudes>> listarSolicitudesAceptadas();
+
+        Task<List<ListarSolicitudes>> listarSolicitudesRechazadas();
+
         Task<bool> guardarSolicitud(Solicitudes solicitudes);
 
         Task<bool> aceptarSoli(int codSoli);
