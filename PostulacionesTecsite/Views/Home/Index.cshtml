@@ -289,7 +289,7 @@
 
                             <div class="value__accordion-content">
                                 <p class="value__accordion-description">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, voluptates commodi. Suscipit quasi sit aliquam deleniti. Modi culpa fugit ducimus quis numquam odio, doloribus maxime, ut quam ipsam ea. Eum.
+                                    Facilitar la búsqueda y solicitud de prácticas para estudiantes de carreras tecnológicas, ofreciendo información detallada y oportunidades de aprendizaje en una empresa líder del sector.
                                 </p>
                             </div>
                         </div>
@@ -307,7 +307,7 @@
 
                             <div class="value__accordion-content">
                                 <p class="value__accordion-description">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, voluptates commodi. Suscipit quasi sit aliquam deleniti. Modi culpa fugit ducimus quis numquam odio, doloribus maxime, ut quam ipsam ea. Eum.
+                                    Ser el recurso de referencia para estudiantes interesados en prácticas tecnológicas, proporcionando experiencias valiosas y conectando a una comunidad dinámica de profesionales del sector.
                                 </p>
                             </div>
                         </div>
@@ -325,7 +325,15 @@
 
                             <div class="value__accordion-content">
                                 <p class="value__accordion-description">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, voluptates commodi. Suscipit quasi sit aliquam deleniti. Modi culpa fugit ducimus quis numquam odio, doloribus maxime, ut quam ipsam ea. Eum.
+                                    Establecer asociaciones estratégicas con universidades y otras instituciones educativas para ampliar nuestra red de reclutamiento de practicantes talentosos y mantener una relación de colaboración a largo plazo.
+                                    </br>
+                                    </br>
+                                    Proporcionar información detallada sobre nuestros programas de prácticas, requisitos y beneficios para atraer a los practicantes más talentosos y motivados.
+                                    </br>
+                                    </br>
+                                    Evaluar continuamente el éxito de nuestros programas de prácticas y realizar mejoras según las necesidades y expectativas de los practicantes y nuestra empresa.
+                              
+                                   
                                 </p>
                             </div>
                         </div>
@@ -439,7 +447,7 @@
                     Postula Aquí
                 </h1>
                 <p class="subscribe__description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis sunt, veniam eos eveniet rem suscipit esse laboriosam distinctio animi corporis, molestiae assumenda corrupti expedita voluptate fuga et. Exercitationem, quod praesentium!
+                    "¡Únete a nuestra empresa de tecnología y descubre un mundo de oportunidades para desarrollar tu potencial en prácticas tecnológicas de vanguardia!"
                 </p>
                 @if (User.IsInRole("ADMIN") || User.IsInRole("USUARIO"))
                 {
@@ -545,68 +553,7 @@
                 <a href="#" class="footer__logo">
                     TECSITE <i class='bx bxs-home-alt-2'></i>
                 </a>
-                <p class="footer__description">
-                    texto texto texto texto <br>
-                    texto texto texto texto
-                </p>
-            </div>
-
-            <div class="footer__content">
-                <div>
-                    <h3 class="footer__title">
-                        Titulo
-                    </h3>
-
-                    <ul class="footer__links">
-                        <li>
-                            <a href="#" class="footer__link">Subtitulo</a>
-                        </li>
-                        <li>
-                            <a href="#" class="footer__link">Subtitulo</a>
-                        </li>
-                        <li>
-                            <a href="#" class="footer__link">Subtitulo</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="footer__title">
-                        Titulo
-                    </h3>
-
-                    <ul class="footer__links">
-                        <li>
-                            <a href="#" class="footer__link">Subtitulo</a>
-                        </li>
-                        <li>
-                            <a href="#" class="footer__link">Subtitulo</a>
-                        </li>
-                        <li>
-                            <a href="#" class="footer__link">Subtitulo</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="footer__title">
-                        Titulo
-                    </h3>
-
-                    <ul class="footer__links">
-                        <li>
-                            <a href="#" class="footer__link">Subtitulo</a>
-                        </li>
-                        <li>
-                            <a href="#" class="footer__link">Subtitulo</a>
-                        </li>
-                        <li>
-                            <a href="#" class="footer__link">Subtitulo</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
+                <div class="footer__content">
                     <h3 class="footer__title">
                         Siguenos
                     </h3>
@@ -654,24 +601,18 @@
     <script src="~/js/js.js"></script>
 
  @*    ESTE ES EL SCRIPT DEL BOT*@
-
-    @if (User.IsInRole("ADMIN") || User.IsInRole("USUARIO"))
-    {
-        <script>
-            window.watsonAssistantChatOptions = {
-                integrationID: "bc54d7cd-e2bf-4608-b65f-b88634d22c47", // The ID of this integration.
-                region: "au-syd", // The region your integration is hosted in.
-                serviceInstanceID: "44daf3ee-eaea-4592-b993-3d098569b1d7", // The ID of your service instance.
-                onLoad: function (instance) { instance.render(); }
-            };
-            setTimeout(function () {
-                const t = document.createElement('script');
-                t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
-                document.head.appendChild(t);
-            });
-        </script>
-    }
-
-    
+    <script>
+        window.watsonAssistantChatOptions = {
+            integrationID: "bc54d7cd-e2bf-4608-b65f-b88634d22c47", // The ID of this integration.
+            region: "au-syd", // The region your integration is hosted in.
+            serviceInstanceID: "44daf3ee-eaea-4592-b993-3d098569b1d7", // The ID of your service instance.
+            onLoad: function (instance) { instance.render(); }
+        };
+        setTimeout(function () {
+            const t = document.createElement('script');
+            t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+            document.head.appendChild(t);
+        });
+    </script>
 </body>
 </html>
