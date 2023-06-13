@@ -718,10 +718,10 @@ body.dark-theme{
   font-weight: 700;
 }
 .table-data .order table tr td .status.aceptadas{
-  background: #24a049;
+  background: blue;
 }
 .table-data .order table tr td .status.rechazadas{
-  background: #6e230d;
+  background: red;
 }
 .table-data .order table tr td .status.pending{
   background: #9ac032;
